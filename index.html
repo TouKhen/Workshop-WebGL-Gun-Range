@@ -5,6 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gun Range Three.JS</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+
+      #instructions {
+        position: fixed;
+        left: 0;
+        top: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+        text-align: center;
+
+        cursor: pointer;
+      }
+      #instructions span {
+        font-size: 40px;
+      }
+      #one-point {
+        position: absolute;
+        top: 10%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-family: "Oswald", sans-serif;
+        font-size: 2.4rem;
+        background-color: white;
+        transition: all 0.1s ease-in;
+      }
+      #score {
+        font-family: "Oswald", sans-serif;
+        font-size: 2.4rem;
+        position: absolute;
+        margin-block: 0;
+        right: 2%;
+        top: 1%;
+      }
+      .hidden {
+        visibility: hidden;
+      }
+      .transform-up {
+        transform: translateY(-10px);
+      }
+    </style>
     <!-- Import maps polyfill -->
     <!-- Remove this when import maps will be widely supported -->
     <script
@@ -16,7 +67,9 @@
       {
         "imports": {
           "three": "./node_modules/three/build/three.module.js",
-          "three/addons/": "./node_modules/three/examples/jsm/"
+          "three/addons/": "./node_modules/three/examples/jsm/",
+          "cannon-es": "./node_modules/cannon-es/dist/cannon-es.js",
+          "three-to-cannon": "./node_modules/three-to-cannon/dist/src/index.d.ts"
         }
       }
     </script>
@@ -29,15 +82,13 @@
     </style>
   </head>
   <body>
-    <div id="blocker">
-      <div id="instructions">
-        <p style="font-size: 36px">Click to play</p>
-        <p>
-          Move: WASD<br />
-          Jump: SPACE<br />
-          Look: MOUSE
-        </p>
-      </div>
+    <div id="instructions">
+      <span>Click to play</span>
+      <br />
+      (W,A,S,D = Move, SPACE = Jump, MOUSE = Look, CLICK = Shoot)
     </div>
+
+    <p id="one-point" class="hidden">+1</p>
+    <p id="score">Score : <span>0</span></p>
   </body>
 </html>

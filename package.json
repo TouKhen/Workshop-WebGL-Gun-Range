@@ -1,8 +1,6 @@
 {
   "dependencies": {
     "cannon-es": "^0.20.0",
-    "three": "^0.148.0",
-    "three-to-cannon": "^4.3.0",
-    "typescript": "^4.9.4"
+    "three": "^0.148.0"
   }
 }
